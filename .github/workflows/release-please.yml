@@ -27,7 +27,6 @@ jobs:
             target-branch: main
   
         - name: Checkout code at release tag
-          if: steps.release.outputs.releases_created == 'true'
           uses: actions/checkout@v2
           with:
             ref: ${{ steps.release.outputs.tag_name }}
