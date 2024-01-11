@@ -32,7 +32,7 @@ jobs:
   
         - name: Checkout code at release tag
           uses: actions/checkout@v2
-          if: steps.release.outputs.env.IMAGE_TAG == 'true'
+          if: steps.release.outputs.env.IMAGE_TAG != 'false'
           with:
             ref: ${{ steps.release.outputs.env.IMAGE_TAG }}
             
