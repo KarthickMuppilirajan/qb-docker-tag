@@ -22,15 +22,17 @@ jobs:
         - name: release-please
           id: release
           uses: google-github-actions/release-please-action@v4.0.1
+          
           with:
             release-type: node
             token: ${{ secrets.PAT }}
             target-branch: main
-          env:
-           DEBUG: 'true'
+          # env:
+          #  DEBUG: 'true'
   
         - name: Checkout code at release tag
           uses: actions/checkout@v2
+          if: steps.release.outputs.env.IMAGE_TAG == 'true'
           with:
             ref: ${{ steps.release.outputs.env.IMAGE_TAG }}
             
